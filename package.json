@@ -1,0 +1,16 @@
+{
+  "name": "@becode/cli",
+  "version": "0.0.1",
+  "private": true,
+  "description": "CLI Utils at BeCode",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/becodeorg/cli.git"
+  },
+  "author": {
+    "name": "leny",
+    "url": "https://becode.org",
+    "email": "leny@becode.org"
+  },
+  "license": "MIT"
+}
