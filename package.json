@@ -12,5 +12,11 @@
     "url": "https://becode.org",
     "email": "leny@becode.org"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "commander": "^2.19.0",
+    "inquirer": "^6.2.0",
+    "yn": "^2.0.0"
+  }
 }
