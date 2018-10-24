@@ -37,6 +37,7 @@
     "commander": "^2.19.0",
     "inquirer": "^6.2.0",
     "opn": "^5.4.0",
+    "user-home": "^2.0.0",
     "yn": "^2.0.0"
   },
   "devDependencies": {

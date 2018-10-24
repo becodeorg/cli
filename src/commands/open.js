@@ -6,8 +6,11 @@
  * started at 24/10/2018
  */
 
-import reporter from "../core/reporter";
 import opn from "opn";
+import chalk from "chalk";
+
+import reporter from "../core/reporter";
+import {get as getConfig} from "../core/configuration";
 
 const data = require("../../data/open.json");
 
@@ -21,6 +24,17 @@ export const action = target => {
     const trgt = target.toLowerCase();
 
     switch (trgt) {
+        case "promo":
+            const config = getConfig();
+
+            if (!config) {
+                reporter.warning(
+                    "You need to configure your tool first! Run ",
+                    chalk.cyan("becode configure"),
+                    "once.",
+                );
+            }
+            break;
         case "central":
         case "watch":
             reporter.log(`Opening ${trgt} repository...`);
