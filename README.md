@@ -66,7 +66,7 @@ Use interactive process to generate useful files for your projects.
 
 ## TODO
 
-- [ ] tooling
+- [x] tooling
 - [ ] structure
 - [ ] basic `open` command
 - [ ] `configure` command

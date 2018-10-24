@@ -3,14 +3,33 @@
   "version": "0.0.1",
   "private": true,
   "description": "CLI Utils at BeCode",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/becodeorg/cli.git"
-  },
   "author": {
     "name": "leny",
     "url": "https://becode.org",
     "email": "leny@becode.org"
+  },
+  "bin": {
+    "becode": "./bin/index.js"
+  },
+  "scripts": {
+    "work": "npx babel src --watch --verbose --out-dir bin",
+    "build": "npx babel src --out-dir bin",
+    "lint": "npx eslint --fix --cache src"
+  },
+  "lint-staged": {
+    "*.js": [
+      "npx eslint --fix --cache src",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npx lint-staged"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/becodeorg/cli.git"
   },
   "license": "MIT",
   "dependencies": {
