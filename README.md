@@ -49,7 +49,7 @@ Open the selected target in your default browser.
 
 ##### Available targets
 
-- `central`: open the [Central](https://github.com/becodeorg/central) repository
+- `central`: open the [Central](https://github.com/becodeorg/Central) repository
 - `watch`: open the [Watch](https://github.com/becodeorg/The-Watch) repository
 - `promo`: open the repository of your promo - you must have run the command `configure` once before
 
@@ -67,8 +67,8 @@ Use interactive process to generate useful files for your projects.
 ## TODO
 
 - [x] tooling
-- [ ] structure
-- [ ] basic `open` command
+- [x] structure
+- [x] basic `open` command
 - [ ] `configure` command
 - [ ] `open` command for `repo` target
 - [ ] `generate` command for `readme` target

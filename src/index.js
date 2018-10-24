@@ -7,4 +7,19 @@
  * started at 24/10/2018
  */
 
-console.log("Hello, world!"); // eslint-disable-line
+import commander from "commander";
+import commands from "./commands";
+
+commands.forEach(({command, description, options, action}) => {
+    const cmd = commander.command(command);
+
+    description && cmd.description(description);
+
+    Array.isArray(options) &&
+        options.length &&
+        options.forEach(opt => cmd.option(...opt));
+
+    cmd.action(action);
+});
+
+commander.parse(process.argv);
