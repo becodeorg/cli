@@ -8,7 +8,7 @@
 
 import {resolve} from "path";
 import home from "user-home";
-import {existsSync} from "fs";
+import {existsSync, writeFileSync} from "fs";
 
 const configFile = resolve(home, ".becode-config.json");
 
@@ -20,4 +20,8 @@ export const get = () => {
     const config = require(configFile); // eslint-disable-line global-require
 
     return config;
+};
+
+export const set = config => {
+    writeFileSync(configFile, JSON.stringify(config, null, 2), "utf8");
 };

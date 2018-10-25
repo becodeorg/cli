@@ -15,8 +15,12 @@ class Reporter {
         console.log(...args);
     }
 
+    success(...args) {
+        console.log("🎉", chalk.bold.green("success:"), ...args);
+    }
+
     warning(...args) {
-        console.log("⚠ ", chalk.bold.yellow("warning:"), ...args);
+        console.log("⚠️ ", chalk.bold.yellow("warning:"), ...args);
     }
 
     error(...args) {

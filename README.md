@@ -69,10 +69,12 @@ Use interactive process to generate useful files for your projects.
 - [x] tooling
 - [x] structure
 - [x] basic `open` command
-- [ ] `configure` command
-- [ ] `open` command for `repo` target
+- [x] `configure` command
+- [x] `open` command for `repo` target
+- [ ] `help` command
 - [ ] `generate` command for `readme` target
 - [ ] `generate` command for `ignore` target
+- [ ] auto-completion
 - [ ] check for update process
 
 * * *
