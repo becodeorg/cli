@@ -1,4 +1,12 @@
 {
   "central": "https://github.com/becodeorg/Central",
-  "watch": "https://github.com/becodeorg/The-Watch"
+  "watch": "https://github.com/becodeorg/The-Watch",
+  "promo": {
+    "Lovelace2 (promo 05)": "https://github.com/becodeorg/lovelace-2",
+    "Johnson2 (promo 05)": "https://github.com/becodeorg/Johnson2",
+    "Swartz2 (promo 06)": "https://github.com/becodeorg/Swartz-2",
+    "Turing2 (promo 06)": "https://github.com/becodeorg/Turing-2",
+    "Hamilton Liège 1.7": "https://github.com/becodeorg/LIE-Hamilton-1.7",
+    "Hopper Genk 1.7": "https://github.com/becodeorg/GNK-Hopper-1.7"
+  }
 }
