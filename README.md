@@ -55,7 +55,7 @@ Open the selected target in your default browser.
 
 #### generate
 
-    becode generate [target]
+    becode generate [target] [...options]
 
 Use interactive process to generate useful files for your projects.
 
@@ -63,6 +63,8 @@ Use interactive process to generate useful files for your projects.
 
 - `readme`: generate a `README.md` file that conforms with the BeCode's conventions
 - `ignore`: generate a common `.gitignore` file
+- `file`: generate a code file with an appropriate header, using personnal informations from the `configure` command
+- `docker-compose`: generate a **docker compose** env, after some questions
 
 ## TODO
 
@@ -71,9 +73,11 @@ Use interactive process to generate useful files for your projects.
 - [x] basic `open` command
 - [x] `configure` command
 - [x] `open` command for `repo` target
-- [ ] `help` command
 - [ ] `generate` command for `readme` target
 - [ ] `generate` command for `ignore` target
+- [ ] `generate` command for `file` target
+- [ ] `generate` command for `docker-compose` target
+- [ ] `help` command
 - [ ] auto-completion
 - [ ] check for update process
 
