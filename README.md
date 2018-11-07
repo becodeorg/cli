@@ -78,8 +78,17 @@ Use interactive process to generate useful files for your projects.
 - [ ] `generate` command for `file` target
 - [ ] `generate` command for `docker-compose` target
 - [ ] `help` command
+- [ ] **first public version on npm**
+- [ ] implement feedbacks
 - [ ] auto-completion
 - [ ] check for update process
+
+### Contribute
+
+Until the first public version, I prefer to be focused on the main structure of the tool and will probably delay any contribution.  
+After that, feel free to _hack_ the tool, suggest any modification and/or implement it by yourself and submit a _pull request_ !
+
+I will soon document the build process & tooling for the project.
 
 * * *
 
