@@ -7,6 +7,7 @@
  */
 
 import * as configure from "./configure";
+import * as generate from "./generate";
 import * as open from "./open";
 
-export default [configure, open];
+export default [configure, generate, open];

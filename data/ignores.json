@@ -1,0 +1,14 @@
+{
+    "C": "C.gitignore",
+    "C++": "C++.gitignore",
+    "Elm": "Elm.gitignore",
+    "Go": "Go.gitignore",
+    "Java": "Java.gitignore",
+    "Node.js": "Node.gitignore",
+    "PHP (Drupal)": "Drupal.gitignore",
+    "PHP (Laravel)": "Laravel.gitignore",
+    "PHP (Symfony)": "Symfony.gitignore",
+    "Python": "Python.gitignore",
+    "Ruby (Rails)": "Rails.gitignore",
+    "Ruby": "Ruby.gitignore"
+}
