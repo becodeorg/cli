@@ -8,10 +8,10 @@
 
 import path from "path";
 import fs from "fs";
-import gitTopLevel from "git-toplevel";
 import inquirer from "inquirer";
 import chalk from "chalk";
 
+import {getGitRoot} from "../../core/utils";
 import reporter from "../../core/reporter";
 
 const data = require("../../../data/ignores.json");
@@ -19,9 +19,7 @@ const data = require("../../../data/ignores.json");
 export default async function() {
     let gitRoot;
 
-    try {
-        gitRoot = await gitTopLevel();
-    } catch (error) {
+    if (!(gitRoot = await getGitRoot())) {
         return reporter.error(
             `You're not in a ${chalk.cyan("git")} repository!`,
         );
