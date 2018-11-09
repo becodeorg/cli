@@ -8,6 +8,7 @@
 
 import reporter from "../core/reporter";
 import generateIgnore from "./generate/ignore";
+import generateEnv from "./generate/env";
 
 export const command = "generate <type>";
 
@@ -15,6 +16,9 @@ export const description = "Generate files for your repository";
 
 export const action = async (type, cmd) => {
     switch (type.toLowerCase()) {
+        case "env":
+            await generateEnv(cmd);
+            break;
         case "ignore":
             await generateIgnore(cmd);
             break;

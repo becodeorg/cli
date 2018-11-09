@@ -64,11 +64,11 @@ Use interactive process to generate useful files for your projects.
 - `readme`: generate a `README.md` file that conforms with the BeCode's conventions
 - `ignore`: generate a common `.gitignore` file
 - `file`: generate a code file with an appropriate header, using personnal informations from the `configure` command
-- `docker-compose`: generate a **docker compose** env, after some questions
+- `env`: generate a **docker compose** env, after some questions
 
 ## Contribute
 
-Until the first public version, I prefer to be focused on the main structure of the tool and will probably delay any contribution.  
+Until the first public version, I prefer to be focused on the main structure of the tool and will probably delay any contribution.
 After that, feel free to _hack_ the tool, suggest any modification and/or implement it by yourself and submit a _pull request_ !
 
 I will soon document the build process & tooling for the project.
