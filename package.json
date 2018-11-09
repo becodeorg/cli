@@ -36,7 +36,9 @@
     "chalk": "^2.4.1",
     "commander": "^2.19.0",
     "enquirer": "^2.0.5",
+    "express": "^4.16.4",
     "git-toplevel": "^1.1.1",
+    "json2yaml": "^1.1.0",
     "opn": "^5.4.0",
     "user-home": "^2.0.0",
     "yn": "^2.0.0"
