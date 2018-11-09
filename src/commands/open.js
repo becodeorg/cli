@@ -8,7 +8,7 @@
 
 import opn from "opn";
 import chalk from "chalk";
-import inquirer from "inquirer";
+import {select} from "enquirer";
 
 import reporter from "../core/reporter";
 import {get as getConfig} from "../core/configuration";
@@ -32,16 +32,11 @@ export const action = async (target, cmd) => {
             let promo;
 
             if (cmd.choose) {
-                const choice = await inquirer.prompt([
-                    {
-                        type: "list",
-                        name: "promo",
-                        message: "Choose a promo:",
-                        choices: Object.keys(data.promo),
-                    },
-                ]);
-
-                promo = choice.promo;
+                promo = await select({
+                    name: "promo",
+                    message: "Choose a promo:",
+                    choices: Object.keys(data.promo),
+                });
             } else if (!config) {
                 return reporter.warning(
                     [

@@ -8,7 +8,7 @@
 
 import path from "path";
 import fs from "fs";
-import inquirer from "inquirer";
+import {confirm, select} from "enquirer";
 import chalk from "chalk";
 
 import {getGitRoot} from "../../core/utils";
@@ -25,16 +25,13 @@ export default async function() {
         );
     }
 
-    const {preset} = await inquirer.prompt([
-        {
-            type: "list",
-            name: "preset",
-            message: `Choose your preset for the ${chalk.yellow(
-                ".gitignore",
-            )} file:`,
-            choices: Object.keys(data),
-        },
-    ]);
+    const preset = await select({
+        name: "preset",
+        message: `Choose your preset for the ${chalk.yellow(
+            ".gitignore",
+        )} file:`,
+        choices: Object.keys(data),
+    });
 
     const ignoreContent = fs.readFileSync(
         path.resolve(__dirname, `../../../data/ignores/${data[preset]}`),
@@ -44,20 +41,17 @@ export default async function() {
     const ignorePath = path.resolve(gitRoot, ".gitignore");
 
     if (fs.existsSync(ignorePath)) {
-        const {confirm} = await inquirer.prompt([
-            {
-                type: "confirm",
-                name: "confirm",
-                message: `You already have a ${chalk.yellow(
-                    ".gitignore",
-                )} file in this repository! Will you ${chalk.bold.red(
-                    "replace",
-                )} it by the selected one?`,
-                default: false,
-            },
-        ]);
+        const override = await confirm({
+            name: "override",
+            message: `You already have a ${chalk.yellow(
+                ".gitignore",
+            )} file in this repository! Will you ${chalk.bold.red(
+                "replace",
+            )} it by the selected one?`,
+            initial: false,
+        });
 
-        if (!confirm) {
+        if (!override) {
             return reporter.log("Aborted.");
         }
     }

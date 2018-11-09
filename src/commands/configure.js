@@ -6,7 +6,7 @@
  * started at 25/10/2018
  */
 
-import inquirer from "inquirer";
+import {prompt} from "enquirer";
 
 import reporter from "../core/reporter";
 import {get as getConfig, set as setConfig} from "../core/configuration";
@@ -23,25 +23,25 @@ export const options = [];
 export const action = async () => {
     const config = getConfig();
 
-    const values = await inquirer.prompt([
+    const values = await prompt([
         {
             type: "input",
             name: "name",
             message: "Your name:",
-            default: (config && config.name) || null,
+            initial: (config && config.name) || null,
         },
         {
             type: "input",
             name: "github",
             message: "Your GitHub account:",
-            default: (config && config.github) || null,
+            initial: (config && config.github) || null,
         },
         {
-            type: "list",
+            type: "select",
             name: "promo",
             message: "Your promo:",
             choices: Object.keys(data.promo),
-            default: (config && config.promo) || null,
+            initial: (config && config.promo) || null,
         },
     ]);
 

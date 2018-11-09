@@ -10,7 +10,7 @@
 
 import path from "path";
 import fs from "fs";
-import inquirer from "inquirer";
+import {select, multiselect} from "enquirer";
 import chalk from "chalk";
 
 import {getGitRoot} from "../../core/utils";
@@ -35,37 +35,31 @@ export default async function() {
         )} environment for your project.`,
     );
 
-    const {langage} = await inquirer.prompt([
-        {
-            type: "list",
-            name: "langage",
-            message: `Choose your ${chalk.yellow("langage")}:`,
-            choices: Object.keys(data.langages),
-        },
-    ]);
+    const langage = await select({
+        name: "langage",
+        message: `Choose your ${chalk.yellow("langage")}:`,
+        choices: Object.keys(data.langages),
+    },
+    );
 
-    const {database} = await inquirer.prompt([
-        {
-            type: "checkbox",
-            name: "database",
-            message: `Choose your ${chalk.yellow("database(s)")}:`,
-            choices: Object.keys(data.databases),
-            default: [],
-        },
-    ]);
+    const database = await multiselect({
+        name: "database",
+        message: `Choose your ${chalk.yellow("database(s)")}:`,
+        choices: Object.keys(data.databases),
+        initial: [],
+    },
+    );
 
-    const {tools} = await inquirer.prompt([
-        {
-            type: "checkbox",
-            name: "tools",
-            message: `Choose your ${chalk.yellow("tool(s)")}:`,
-            choices: database.reduce(
-                (arr, db) => (arr.push(...data.databases[db]), arr),
-                data.tools,
-            ),
-            default: [],
-        },
-    ]);
+    const tools = await multiselect({
+        name: "tools",
+        message: `Choose your ${chalk.yellow("tool(s)")}:`,
+        choices: database.reduce(
+            (arr, db) => (arr.push(...data.databases[db]), arr),
+            data.tools,
+        ),
+        initial: [],
+    },
+    );
 
     console.log("Your choices:", {
         langage,
