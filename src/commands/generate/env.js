@@ -10,12 +10,16 @@
 
 import path from "path";
 import fs from "fs";
+import {promisify} from "util";
+import childProcess from "child_process";
 import {select, multiselect, confirm} from "enquirer";
 import chalk from "chalk";
 import {stringify} from "json2yaml";
 
 import {getGitRoot} from "../../core/utils";
 import reporter from "../../core/reporter";
+
+const exec = promisify(childProcess.exec);
 
 const data = require("../../../data/env.json");
 
@@ -25,6 +29,7 @@ const DB_NONE = "None";
 export default async function(cmd) {
     let targetPath,
         services = [],
+        postCommands = [],
         composeConfig = {
             version: "3",
             services: {},
@@ -62,7 +67,7 @@ export default async function(cmd) {
     });
 
     if (app !== CUSTOM_ENV) {
-        services.push(data.apps[app]);
+        services.push(...data.apps[app]);
     } else {
         const langage = await select({
             name: "langage",
@@ -95,9 +100,11 @@ export default async function(cmd) {
     }
 
     services.forEach(service => {
-        const {name, configuration} = data.services[service];
+        const {name, configuration, commands} = data.services[service];
 
         composeConfig.services[name] = configuration;
+
+        Array.isArray(commands) && postCommands.push(...commands);
     });
 
     const composePath = path.resolve(targetPath, "docker-compose.yml");
@@ -119,6 +126,27 @@ export default async function(cmd) {
     }
 
     fs.writeFileSync(composePath, stringify(composeConfig), "utf8");
+
+    if (postCommands.length) {
+        reporter.log(
+            `Running ${chalk.yellow(postCommands.length)} ${chalk.cyan(
+                "post commands",
+            )}…`,
+        );
+
+        await Promise.all(
+            postCommands.map(async postCommand => {
+                const {stdout, stderr} = await exec(postCommand, {
+                    log: false,
+                    cwd: process.cwd(),
+                });
+
+                stderr && reporter.error(stderr);
+
+                reporter.log(stdout);
+            }),
+        );
+    }
 
     reporter.success(
         `Your ${chalk.yellow("docker-compose.yml")} file has been created!`,
