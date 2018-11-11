@@ -19,8 +19,12 @@ import reporter from "../../core/reporter";
 
 const data = require("../../../data/env.json");
 
+const CUSTOM_ENV = "Custom environment";
+const DB_NONE = "None";
+
 export default async function(cmd) {
     let targetPath,
+        services = [],
         composeConfig = {
             version: "3",
             services: {},
@@ -48,30 +52,49 @@ export default async function(cmd) {
         )} environment for your project.`,
     );
 
-    const langage = await select({
-        name: "langage",
-        message: `Choose your ${chalk.yellow("langage")}:`,
-        choices: Object.keys(data.langages),
+    const app = await select({
+        name: "app",
+        message: `Choose a preset for an ${chalk.yellow(
+            "app",
+        )}, or build your ${chalk.yellow("custom environment")}:`,
+        choices: [CUSTOM_ENV, ...Object.keys(data.apps)],
+        initial: CUSTOM_ENV,
     });
 
-    const database = await multiselect({
-        name: "database",
-        message: `Choose your ${chalk.yellow("database(s)")}:`,
-        choices: Object.keys(data.databases),
-        initial: [],
-    });
+    if (app !== CUSTOM_ENV) {
+        services.push(data.apps[app]);
+    } else {
+        const langage = await select({
+            name: "langage",
+            message: `Choose your ${chalk.yellow("langage")}:`,
+            choices: Object.keys(data.langages),
+        });
 
-    const tools = await multiselect({
-        name: "tools",
-        message: `Choose your ${chalk.yellow("tool(s)")}:`,
-        choices: database.reduce(
-            (arr, db) => (arr.push(...data.databases[db]), arr),
-            data.tools,
-        ),
-        initial: [],
-    });
+        services.push(langage);
 
-    [langage].concat(database, tools).forEach(service => {
+        const database = await select({
+            name: "database",
+            message: `Choose your ${chalk.yellow("database")}:`,
+            choices: [DB_NONE, ...Object.keys(data.databases)],
+            initial: DB_NONE,
+        });
+
+        database !== DB_NONE && services.push(database);
+
+        const tools = await multiselect({
+            name: "tools",
+            message: `Choose your ${chalk.yellow("tool(s)")}:`,
+            choices: [
+                ...(database === DB_NONE ? [] : data.databases[database]),
+                ...data.tools,
+            ],
+            initial: [],
+        });
+
+        tools.length && services.push(...tools);
+    }
+
+    services.forEach(service => {
         const {name, configuration} = data.services[service];
 
         composeConfig.services[name] = configuration;
