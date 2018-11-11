@@ -19,6 +19,12 @@ const data = require("../../../data/ignores.json");
 export default async function() {
     let gitRoot;
 
+    if (cmd.output) {
+        reporter.warning(
+            `Option ${chalk.cyan("output")} is ignored for this target`,
+        );
+    }
+
     if (!(gitRoot = await getGitRoot())) {
         return reporter.error(
             `You're not in a ${chalk.cyan("git")} repository!`,

@@ -19,14 +19,22 @@ import reporter from "../../core/reporter";
 
 const data = require("../../../data/env.json");
 
-export default async function() {
-    let gitRoot,
+export default async function(cmd) {
+    let targetPath,
         composeConfig = {
             version: "3",
             services: {},
         };
 
-    if (!(gitRoot = await getGitRoot())) {
+    if (cmd.output && (targetPath = path.resolve(process.cwd(), cmd.output))) {
+        if (!fs.statSync(targetPath).isDirectory()) {
+            return reporter.error(
+                `Given output path (${chalk.yellow(
+                    targetPath,
+                )}) isn't a directory!`,
+            );
+        }
+    } else if (!(targetPath = await getGitRoot())) {
         return reporter.error(
             `You're not in a ${chalk.cyan("git")} repository!`,
         );
@@ -69,16 +77,16 @@ export default async function() {
         composeConfig.services[name] = configuration;
     });
 
-    const composePath = path.resolve(gitRoot, "docker-compose.yml");
+    const composePath = path.resolve(targetPath, "docker-compose.yml");
 
     if (fs.existsSync(composePath)) {
         const override = await confirm({
             name: "override",
             message: `You already have a ${chalk.yellow(
                 "docker-compose.yml",
-            )} file in this repository! Will you ${chalk.bold.red(
-                "replace",
-            )} it?`,
+            )} file in this ${
+                cmd.output ? "folder" : "repository"
+            }! Will you ${chalk.bold.red("replace")} it?`,
             initial: false,
         });
 
@@ -91,6 +99,8 @@ export default async function() {
 
     reporter.success(
         `Your ${chalk.yellow("docker-compose.yml")} file has been created!`,
-        `Check the ${chalk.yellow("docker-readme.md")} file for more informations.`,
+        `Check the ${chalk.yellow(
+            "docker-readme.md",
+        )} file for more informations.`,
     );
 }

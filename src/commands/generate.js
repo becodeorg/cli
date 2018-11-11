@@ -14,6 +14,13 @@ export const command = "generate <type>";
 
 export const description = "Generate files for your repository";
 
+export const options = [
+    [
+        "-o, --output <path>",
+        "Generate files at specified path (defaults to current git repo root)",
+    ],
+];
+
 export const action = async (type, cmd) => {
     switch (type.toLowerCase()) {
         case "env":
