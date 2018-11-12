@@ -34,3 +34,5 @@ Then, simply run the following command to get started:
     docker-compose up
 
 The details for all your services is detailed bellow.
+
+## Your services
