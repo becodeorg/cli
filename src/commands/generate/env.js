@@ -25,9 +25,11 @@ const data = require("../../../data/env.json");
 
 const CUSTOM_ENV = "Custom environment";
 const DB_NONE = "None";
+const DOC_PATH = path.resolve(__dirname, "../../../data/env");
 
 export default async function(cmd) {
     let targetPath,
+        docContent = [],
         services = [],
         postCommands = [],
         composeConfig = {
@@ -100,16 +102,20 @@ export default async function(cmd) {
     }
 
     services.forEach(service => {
-        const {name, configuration, commands} = data.services[service];
+        const {name, configuration, commands, documentation} = data.services[
+            service
+        ];
 
         composeConfig.services[name] = configuration;
+        docContent.push(fs.readFileSync(path.join(DOC_PATH, documentation)));
 
         Array.isArray(commands) && postCommands.push(...commands);
     });
 
     const composePath = path.resolve(targetPath, "docker-compose.yml");
+    const docPath = path.resolve(targetPath, "docker-readme.md");
 
-    if (fs.existsSync(composePath)) {
+    if (fs.existsSync(composePath) || fs.existsSync(docPath)) {
         const override = await confirm({
             name: "override",
             message: `You already have a ${chalk.yellow(
@@ -126,6 +132,11 @@ export default async function(cmd) {
     }
 
     fs.writeFileSync(composePath, stringify(composeConfig), "utf8");
+    fs.writeFileSync(
+        docPath,
+        `${fs.readFileSync(path.join(DOC_PATH, "base.md"), "utf8")}\n${docContent.join("\n* * *\n\n")}`,
+        "utf8",
+    );
 
     if (postCommands.length) {
         reporter.log(
