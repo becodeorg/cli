@@ -1,4 +1,4 @@
-### Service - Database: MySQL
+### Database: MySQL
 
 #### What is MySQL?
 
@@ -6,8 +6,6 @@ MySQL is the world's most popular open source database. With its proven performa
 
 * **Website:** [mysql.com](https://www.mysql.com)
 * **Documentation:** [dev.mysql.com/doc/](https://dev.mysql.com/doc/)
-
-* * *
 
 #### Container
 
@@ -32,7 +30,7 @@ You can access the database **from another container** with the following inform
 
 ###### Access from your host
 
-You can access the database  **from you host** with the following informations:
+You can access the database  **from your host** with the following informations:
 
 * **host:** `localhost`
 * **port:** `3306`

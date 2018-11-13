@@ -1,4 +1,4 @@
-### Service - Database: PostgreSQL
+### Database: PostgreSQL
 
 #### What is PostgreSQL?
 
@@ -8,8 +8,6 @@ PostgreSQL implements the majority of the SQL:2011 standard, is ACID-compliant a
 
 * **Website:** [postgresql.org](https://www.postgresql.org/)
 * **Documentation:** [postgresql.org/docs/](https://www.postgresql.org/docs/)
-
-* * *
 
 #### Container
 
@@ -34,7 +32,7 @@ You can access the database **from another container** with the following inform
 
 ###### Access from your host
 
-You can access the database  **from you host** with the following informations:
+You can access the database  **from your host** with the following informations:
 
 * **host:** `postgres`
 * **port:** `5432`

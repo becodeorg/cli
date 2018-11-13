@@ -1,4 +1,4 @@
-### Service - Database: MariaDB
+### Database: MariaDB
 
 #### What is MariaDB?
 
@@ -6,8 +6,6 @@ MariaDB is a community-developed fork of MySQL intended to remain free under the
 
 * **Website:** [mariadb.org](https://mariadb.org)
 * **Documentation:** [mariadb.org/learn](https://mariadb.org/learn/)
-
-* * *
 
 #### Container
 

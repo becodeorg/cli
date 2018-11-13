@@ -1,4 +1,4 @@
-### Service - Tools: phpMyAdmin
+### Tools: phpMyAdmin
 
 #### What is phpMyAdmin?
 
@@ -6,8 +6,6 @@ A web interface for MySQL and MariaDB.
 
 * **Website:** [phpmyadmin.net](https://www.phpmyadmin.net/)
 * **Documentation:** [phpmyadmin.net/docs](https://www.phpmyadmin.net/docs/)
-
-* * *
 
 #### Container
 

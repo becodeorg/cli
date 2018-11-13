@@ -1,4 +1,4 @@
-### Service - Langage: Node.js
+### Langage: Node.js
 
 #### What is Node.js?
 
@@ -10,8 +10,6 @@ Node.js internally uses the Google V8 JavaScript engine to execute code; a large
 
 * **Website:** [nodejs.org](https://nodejs.org)
 * **Documentation:** [nodejs.org/en/docs/](https://nodejs.org/en/docs/)
-
-* * *
 
 #### Container
 

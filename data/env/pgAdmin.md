@@ -1,4 +1,4 @@
-### Service - Tools: pgAdmin
+### Tools: pgAdmin
 
 #### What is pgAdmin?
 
@@ -6,8 +6,6 @@ pgAdmin 4 is a web based administration tool for the PostgreSQL database.
 
 * **Website:** [pgadmin.org](https://www.pgadmin.org/)
 * **Documentation:** [pgadmin.org/docs/](https://www.pgadmin.org/docs/)
-
-* * *
 
 #### Container
 

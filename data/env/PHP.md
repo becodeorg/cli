@@ -1,4 +1,4 @@
-### Service - Langage: PHP
+### Langage: PHP
 
 #### What is PHP?
 
@@ -6,8 +6,6 @@ PHP is a server-side scripting language designed for web development, but which 
 
 * **Website:** [php.net](http://php.net)
 * **Documentation:** [php.net/docs.php](http://php.net/docs.php)
-
-* * *
 
 #### Container
 
