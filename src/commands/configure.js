@@ -43,6 +43,12 @@ export const action = async () => {
             choices: Object.keys(data.promo),
             initial: (config && config.promo) || null,
         },
+        {
+            type: "confirm",
+            name: "coach",
+            message: "Are you a coach?",
+            initial: (config && config.coach) || false,
+        },
     ]);
 
     setConfig(values);
