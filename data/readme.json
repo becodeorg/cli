@@ -1,0 +1,54 @@
+{
+    "emoji_types": [
+        {
+            "emoji": "ℹ️",
+            "title": "Information",
+            "description": "Informative repositories, with useful resources or administratives information.",
+            "coach": true
+        },
+        {
+            "emoji": "📦",
+            "title": "Promo (active)",
+            "description": "Main repo for an active BeCode promo.",
+            "coach": true
+        },
+        {
+            "emoji": "🗄️",
+            "title": "Promo (archived)",
+            "description": "Main repo for an past BeCode promo.",
+            "coach": true
+        },
+        {
+            "emoji": "📚",
+            "title": "Watch",
+            "description": "Watch repo.",
+            "coach": true
+        },
+        {
+            "emoji": "🛰️",
+            "title": "Student Projects",
+            "description": "Pedagogical projects by BeCode learners."
+        },
+        {
+            "emoji": "🔬",
+            "title": "External Projects",
+            "description": "(real) projects for clients."
+        },
+        {
+            "emoji": "🔨",
+            "title": "Internal Projects",
+            "description": "Development of BeCode's plateform/project."
+        },
+        {
+            "emoji": "⚙️",
+            "title": "Tools",
+            "description": "Useful tools, both for internal or public usage."
+        },
+        {
+            "emoji": "👩‍🏫",
+            "title": "Coach Stuffs",
+            "description": "Coach repositories, administrative stuffs.",
+            "coach": true
+        }
+    ]
+}

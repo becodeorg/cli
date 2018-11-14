@@ -71,7 +71,7 @@ Use interactive process to generate useful files for your projects.
 
 ##### Available options
 
-- `-o  <path>`, `--output <path>` : Generate target files at specified path (defaults to current git repo root) - *only for the `env` target*
+- `-o  <path>`, `--output <path>` : Generate target files at specified path (defaults to current git repo root) - *not supported for the `ignore` target*
 
 ## Contribute
 
