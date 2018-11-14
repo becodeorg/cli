@@ -43,7 +43,7 @@ Should be run once, possibly right after installing the cli tool.
 
 #### open
 
-    becode open [target]
+    becode open [target] [...options]
 
 Open the selected target in your default browser.
 
@@ -52,6 +52,10 @@ Open the selected target in your default browser.
 - `central`: open the [Central](https://github.com/becodeorg/Central) repository
 - `watch`: open the [Watch](https://github.com/becodeorg/The-Watch) repository
 - `promo`: open the repository of your promo - you must have run the command `configure` once before
+
+##### Available options
+
+- `-c` `--choose` : Choose promo in a list instead of using the configured one
 
 #### generate
 
@@ -63,8 +67,11 @@ Use interactive process to generate useful files for your projects.
 
 - `readme`: generate a `README.md` file that conforms with the BeCode's conventions
 - `ignore`: generate a common `.gitignore` file
-- `file`: generate a code file with an appropriate header, using personnal informations from the `configure` command
 - `env`: generate a **docker compose** env, after some questions
+
+##### Available options
+
+- `-o  <path>`, `--output <path>` : Generate target files at specified path (defaults to current git repo root) - *only for the `env` target*
 
 ## Contribute
 
