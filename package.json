@@ -2,7 +2,12 @@
     "name": "@becode/cli",
     "version": "0.0.1",
     "private": true,
-    "description": "CLI Utils at BeCode",
+    "description": "CLI Utils at BeCode. Useful for everyone at BeCode.",
+    "keywords": ["cli", "tools", "shortcuts", "docker-compose"],
+    "homepage": "https://github.com/becodeorg/cli#readme",
+    "bugs": {
+        "url": "https://github.com/becodeorg/cli/issues"
+    },
     "author": {
         "name": "leny",
         "url": "https://becode.org",
@@ -11,6 +16,7 @@
     "bin": {
         "becode": "./bin/index.js"
     },
+    "files": ["bin", "data"],
     "scripts": {
         "work": "npx babel src --watch --verbose --out-dir bin",
         "build": "npx babel src --out-dir bin",
@@ -34,7 +40,7 @@
     "dependencies": {
         "chalk": "^2.4.1",
         "commander": "^2.19.0",
-        "enquirer": "^2.0.5",
+        "enquirer": "^2.0.7",
         "express": "^4.16.4",
         "git-toplevel": "^1.1.1",
         "json2yaml": "^1.1.0",
@@ -44,15 +50,15 @@
         "yn": "^2.0.0"
     },
     "devDependencies": {
-        "@babel/cli": "^7.1.2",
-        "@babel/core": "^7.1.2",
+        "@babel/cli": "^7.1.5",
+        "@babel/core": "^7.1.6",
         "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
-        "@babel/preset-env": "^7.1.0",
+        "@babel/preset-env": "^7.1.6",
         "babel-eslint": "^10.0.1",
-        "eslint": "^5.7.0",
+        "eslint": "^5.9.0",
         "eslint-plugin-prettier": "^3.0.0",
-        "husky": "^1.1.2",
-        "lint-staged": "^7.3.0",
-        "prettier": "^1.14.3"
+        "husky": "^1.1.4",
+        "lint-staged": "^8.0.4",
+        "prettier": "^1.15.2"
     }
 }
