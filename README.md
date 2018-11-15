@@ -75,7 +75,7 @@ Use interactive process to generate useful files for your projects.
 
 Feel free to _hack_ the tool, suggest any modification and/or implement it by yourself and submit a _pull request_ !
 
-I will soon document the build process & tooling for the project.
+The contribution guide is in the [CONTRIBUTING.md](./CONTRIBUTING.md) file.
 
 * * *
 
