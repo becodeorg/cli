@@ -6,6 +6,7 @@
  * started at 25/10/2018
  */
 
+import chalk from "chalk";
 import {prompt} from "enquirer";
 
 import reporter from "../core/reporter";
@@ -18,10 +19,37 @@ export const command = "configure";
 export const description =
     "Configure your BeCode tool to save your params for future uses.";
 
-export const options = [];
+export const options = [
+    ["-s, --show", "Show your configuration without editing it."],
+];
 
-export const action = async () => {
+export const action = async cmd => {
     const config = getConfig();
+
+    if (cmd.show) {
+        if (!config) {
+            reporter.warning(
+                "No configuration found. Please answer the following questions:",
+            );
+        } else {
+            reporter.log(
+                chalk.underline.yellow("Your configuration:"),
+                "\n",
+                chalk.bold("Name:"),
+                chalk.cyan(config.name),
+                "\n",
+                chalk.bold("GitHub account:"),
+                chalk.cyan(config.github),
+                "\n",
+                chalk.bold("Promo:"),
+                chalk.cyan(config.promo),
+                "\n",
+                chalk.bold("Coach profile:"),
+                chalk.cyan(config.coach ? "yes" : "no"),
+            );
+            process.exit(0);
+        }
+    }
 
     const values = await prompt([
         {
