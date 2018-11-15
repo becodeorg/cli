@@ -10,13 +10,13 @@
 
 **BeCode CLI** is a command-line based util, with useful tools to automate some of your dev tasks at BeCode.
 
-## About
-
-*TODO*
-
 ## Installation
 
-*TODO*
+You must have [**node.js**](https://nodejs.org/en/) installed on your machine.
+
+Simply run the following command to install the **BeCode CLI**:
+
+	npm install -g @becode/cli
 
 ## Usage
 
@@ -38,7 +38,7 @@ or
 
     becode configure
 
-Ask you some questions to setup the cli tool.
+Ask you some questions to setup the cli tool.  
 Should be run once, possibly right after installing the cli tool.
 
 #### open
@@ -52,6 +52,8 @@ Open the selected target in your default browser.
 - `central`: open the [Central](https://github.com/becodeorg/Central) repository
 - `watch`: open the [Watch](https://github.com/becodeorg/The-Watch) repository
 - `promo`: open the repository of your promo - you must have run the command `configure` once before
+- `github`: open your GitHub profile (or, if you haven't configured your tool, the GitHub homepage)
+- `my` or `mybecode`: open the **MyBeCode** platform
 
 ##### Available options
 
@@ -75,8 +77,7 @@ Use interactive process to generate useful files for your projects.
 
 ## Contribute
 
-Until the first public version, I prefer to be focused on the main structure of the tool and will probably delay any contribution.
-After that, feel free to _hack_ the tool, suggest any modification and/or implement it by yourself and submit a _pull request_ !
+Feel free to _hack_ the tool, suggest any modification and/or implement it by yourself and submit a _pull request_ !
 
 I will soon document the build process & tooling for the project.
 
