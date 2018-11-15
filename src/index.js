@@ -23,3 +23,5 @@ commands.forEach(({command, description, options, action}) => {
 });
 
 commander.parse(process.argv);
+
+!process.argv.slice(2).length && commander.outputHelp();
