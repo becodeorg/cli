@@ -20,4 +20,4 @@ How to use the project, if applicable
 
 * * *
 
-[[START_DATE]], [[AUTHOR]], [[LICENSE]].
+[[START_DATE]], [[AUTHOR]].

@@ -14,7 +14,8 @@
     "scripts": {
         "work": "npx babel src --watch --verbose --out-dir bin",
         "build": "npx babel src --out-dir bin",
-        "lint": "npx eslint --fix --cache src"
+        "lint": "npx eslint --fix --cache src",
+        "postinstall": "npx becode configure"
     },
     "lint-staged": {
         "*.js": ["npx eslint --fix --cache src", "git add"],
@@ -37,6 +38,7 @@
         "express": "^4.16.4",
         "git-toplevel": "^1.1.1",
         "json2yaml": "^1.1.0",
+        "luxon": "^1.6.2",
         "opn": "^5.4.0",
         "user-home": "^2.0.0",
         "yn": "^2.0.0"

@@ -9,6 +9,7 @@
 import reporter from "../core/reporter";
 import generateIgnore from "./generate/ignore";
 import generateEnv from "./generate/env";
+import generateReadme from "./generate/readme";
 
 export const command = "generate <type>";
 
@@ -23,6 +24,9 @@ export const options = [
 
 export const action = async (type, cmd) => {
     switch (type.toLowerCase()) {
+        case "readme":
+            await generateReadme(cmd);
+            break;
         case "env":
             await generateEnv(cmd);
             break;

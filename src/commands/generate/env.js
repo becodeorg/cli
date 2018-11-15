@@ -6,8 +6,6 @@
  * started at 08/11/2018
  */
 
-/* eslint-disable */
-
 import path from "path";
 import fs from "fs";
 import {promisify} from "util";
@@ -107,7 +105,9 @@ export default async function(cmd) {
         ];
 
         composeConfig.services[name] = configuration;
-        docContent.push(fs.readFileSync(path.join(DOC_PATH, documentation)));
+        docContent.push(
+            fs.readFileSync(path.join(DOC_PATH, documentation), "utf8"),
+        );
 
         Array.isArray(commands) && postCommands.push(...commands);
     });
@@ -134,7 +134,10 @@ export default async function(cmd) {
     fs.writeFileSync(composePath, stringify(composeConfig), "utf8");
     fs.writeFileSync(
         docPath,
-        `${fs.readFileSync(path.join(DOC_PATH, "base.md"), "utf8")}\n${docContent.join("\n* * *\n\n")}`,
+        `${fs.readFileSync(
+            path.join(DOC_PATH, "base.md"),
+            "utf8",
+        )}\n${docContent.join("\n* * *\n\n")}`,
         "utf8",
     );
 
