@@ -15,7 +15,7 @@
         "work": "npx babel src --watch --verbose --out-dir bin",
         "build": "npx babel src --out-dir bin",
         "lint": "npx eslint --fix --cache src",
-        "postinstall": "npx becode configure"
+        "postinstall": "node ./bin/post-install.js"
     },
     "lint-staged": {
         "*.js": ["npx eslint --fix --cache src", "git add"],
