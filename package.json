@@ -20,6 +20,7 @@
     "scripts": {
         "work": "npx babel src --watch --verbose --out-dir bin",
         "build": "npx babel src --out-dir bin",
+        "prepare": "npx babel src --out-dir bin",
         "lint": "npx eslint --fix --cache src",
         "postinstall": "node ./bin/post-install.js"
     },
