@@ -10,6 +10,10 @@
 import commander from "commander";
 import commands from "./commands";
 
+const {version} = require(`${__dirname}/../package.json`);
+
+commander.version(version);
+
 commands.forEach(({command, description, options, action}) => {
     const cmd = commander.command(command);
 
