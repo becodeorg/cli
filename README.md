@@ -4,6 +4,12 @@
 
 * * *
 
+[![npm version](https://badge.fury.io/js/%40becode%2Fcli.svg)](https://badge.fury.io/js/%40becode%2Fcli)
+[![License: MIT](https://img.shields.io/github/license/becodeorg/cli.svg)](https://github.com/becodeorg/cli/blob/develop/LICENSE)
+[![GitHub Issues](https://img.shields.io/github/issues/becodeorg/cli.svg)](https://github.com/becodeorg/cli/issues)
+
+* * *
+
 **BeCode CLI** is a command-line based util, with useful tools to automate some of your dev tasks at BeCode.
 
 ## Installation
