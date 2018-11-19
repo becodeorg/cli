@@ -16,7 +16,7 @@ import reporter from "../../core/reporter";
 
 const data = require("../../../data/ignores.json");
 
-export default async function() {
+export default async function(cmd) {
     let gitRoot;
 
     if (cmd.output) {
