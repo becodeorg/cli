@@ -10,7 +10,20 @@ Follow the procedure on [this page](https://docs.docker.com/docker-for-mac/insta
 
 ### For Windows
 
+#### Pro, Enterprise or Education versions
+
 Follow the procedure on [this page](https://docs.docker.com/docker-for-windows/install/)
+
+#### Home version
+
+To use docker on Windows Home, you need to use the [Docker Toolbox](https://docs.docker.com/toolbox/overview/), which use VirtualBox to run docker on your machine.  
+
+##### ⚠️ Important notes for Windows Home version
+
+The Docker Toolbox and the VirtualBox env will change two important things when you use docker : 
+
+1. The host to access the containers isn't `localhost`, but the IP `192.168.99.100` (by default)
+2. Due to the nature of VirtualBox, the *volumes* binding between your local system and the containers are kinda limited. Please ensure that **your working folder** is inside the `C:/Users` path.
 
 ### For Linux
 

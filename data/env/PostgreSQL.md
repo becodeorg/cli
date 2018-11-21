@@ -15,8 +15,6 @@ PostgreSQL implements the majority of the SQL:2011 standard, is ACID-compliant a
 
 ##### Usage
 
-The db files will be saved in `./db/postgres` for persistance. Simply delete the folder to delete your database.
-
 **IMPORTANT:** the first startup of this container is long : the db server needs to be initialized.
 
 **NOTE:** the container create a default `dev` database at startup - but you can create another within your code if you need it (or with pgAdmin)
