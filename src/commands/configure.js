@@ -51,35 +51,44 @@ export const action = async cmd => {
         }
     }
 
-    const values = await prompt([
-        {
-            type: "input",
-            name: "name",
-            message: "Your name:",
-            initial: (config && config.name) || null,
-        },
-        {
-            type: "input",
-            name: "github",
-            message: "Your GitHub account:",
-            initial: (config && config.github) || null,
-        },
-        {
-            type: "select",
-            name: "promo",
-            message: "Your promo:",
-            choices: Object.keys(data.promo),
-            initial: (config && config.promo) || null,
-        },
-        {
-            type: "confirm",
-            name: "coach",
-            message: "Are you a coach?",
-            initial: (config && config.coach) || false,
-        },
-    ]);
+    try {
+        const values = await prompt([
+            {
+                type: "input",
+                name: "name",
+                message: "Your name:",
+                initial: (config && config.name) || null,
+            },
+            {
+                type: "input",
+                name: "github",
+                message: "Your GitHub account:",
+                initial: (config && config.github) || null,
+            },
+            {
+                type: "select",
+                name: "promo",
+                message: "Your promo:",
+                choices: Object.keys(data.promo),
+                initial: (config && config.promo) || null,
+            },
+            {
+                type: "confirm",
+                name: "coach",
+                message: "Are you a coach?",
+                initial: (config && config.coach) || false,
+            },
+        ]);
 
-    setConfig(values);
+        if (Object.keys(values).length !== 4) {
+            throw new Error("Aborted");
+        }
+
+        setConfig(values);
+    } catch (error) {
+        reporter.log("Aborted.");
+        process.exit(0);
+    }
 
     reporter.success("Your config has been saved!");
 };

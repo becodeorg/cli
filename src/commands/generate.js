@@ -39,21 +39,25 @@ export const action = async (type, cmd) => {
         ],
     };
 
-    if (!Object.keys(types).includes(typeKey)) {
-        reporter.warning("Unknown or no type given!");
+    try {
+        if (!Object.keys(types).includes(typeKey)) {
+            reporter.warning("Unknown or no type given!");
 
-        typeKey = await select({
-            name: "type",
-            message: "Choose a type:",
-            choices: Object.entries(types).map(([name, [, hint]]) => ({
-                name,
-                message: name,
-                hint,
-            })),
-        });
+            typeKey = await select({
+                name: "type",
+                message: "Choose a type:",
+                choices: Object.entries(types).map(([name, [, hint]]) => ({
+                    name,
+                    message: name,
+                    hint,
+                })),
+            });
+        }
+
+        const [typeCommand] = types[typeKey];
+
+        await typeCommand(cmd);
+    } catch (error) {
+        reporter.log("Aborted.");
     }
-
-    const typeCommand = types[typeKey][0];
-
-    await typeCommand(cmd);
 };
