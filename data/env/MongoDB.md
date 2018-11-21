@@ -13,8 +13,6 @@ MongoDB is a free and open-source cross-platform document-oriented database prog
 
 ##### Usage
 
-The db files will be saved in `./db/mongo` for persistance. Simply delete the folder to delete your database.
-
 **IMPORTANT:** the first startup of this container is long : the db server needs to be initialized.
 
 **NOTE:** the container don't create a database at startup - create it within your code (or with MongoExpress)

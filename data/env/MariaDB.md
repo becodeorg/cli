@@ -15,8 +15,6 @@ MariaDB is a community-developed fork of MySQL intended to remain free under the
 
 > **NOTE:** from dev POV, using MariaDB is strictly the same as using MySQL.
 
-The db files will be saved in `./db/mysql` for persistance. Simply delete the folder to delete your database.
-
 **IMPORTANT:** the first startup of this container is long : the db server needs to be initialized.
 
 **NOTE:** the container don't create a database at startup - create it within your code (or with phpMyAdmin)
