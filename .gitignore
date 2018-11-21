@@ -6,3 +6,4 @@ node_modules
 /db
 /docker-compose.yml
 /playground
+/docker-readme.md

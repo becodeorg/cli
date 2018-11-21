@@ -8,10 +8,13 @@
 
 import chalk from "chalk";
 
+const {version} = require(`${__dirname}/../package.json`);
+
 const message = [
     "🎉",
     chalk.green("Yeah!"),
     chalk.cyan("BeCode CLI"),
+    chalk.magenta(version),
     "is installed!",
     "\n",
     "\n",
