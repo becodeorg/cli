@@ -24,6 +24,8 @@ const data = require("../../../data/env.json");
 const CUSTOM_ENV = "Custom environment";
 const DB_NONE = "None";
 const DOC_PATH = path.resolve(__dirname, "../../../data/env");
+const REMOVE_FLAG = "---REMOVEME---";
+const REMOVE_FLAG_MATCHER = /\"---REMOVEME---\"/gi;
 
 export default async function(cmd) {
     let targetPath,
@@ -36,6 +38,13 @@ export default async function(cmd) {
         };
 
     if (cmd.output && (targetPath = path.resolve(process.cwd(), cmd.output))) {
+        if (!fs.existsSync(targetPath)) {
+            return reporter.error(
+                `Given output path (${chalk.yellow(
+                    targetPath,
+                )}) doesn't exists!`,
+            );
+        }
         if (!fs.statSync(targetPath).isDirectory()) {
             return reporter.error(
                 `Given output path (${chalk.yellow(
@@ -99,12 +108,22 @@ export default async function(cmd) {
         tools.length && services.push(...tools);
     }
 
-    services.forEach(service => {
-        const {name, configuration, commands, documentation} = data.services[
-            service
+    services.forEach(key => {
+        const {name, service, commands, documentation, volumes} = data.services[
+            key
         ];
 
-        composeConfig.services[name] = configuration;
+        composeConfig.services[name] = service;
+
+        if (Array.isArray(volumes)) {
+            if (!composeConfig.volumes) {
+                composeConfig.volumes = {};
+            }
+            volumes.forEach(volume => {
+                composeConfig.volumes[volume] = REMOVE_FLAG;
+            });
+        }
+
         docContent.push(
             fs.readFileSync(path.join(DOC_PATH, documentation), "utf8"),
         );
@@ -131,7 +150,11 @@ export default async function(cmd) {
         }
     }
 
-    fs.writeFileSync(composePath, stringify(composeConfig), "utf8");
+    fs.writeFileSync(
+        composePath,
+        stringify(composeConfig).replace(REMOVE_FLAG_MATCHER, ""),
+        "utf8",
+    );
     fs.writeFileSync(
         docPath,
         `${fs.readFileSync(
