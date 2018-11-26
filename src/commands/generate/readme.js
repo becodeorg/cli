@@ -66,11 +66,11 @@ export default async function(cmd) {
                     message: `${emoji}\u{00A0}\u{00A0}${title}`,
                     hint: chalk.italic(description),
                 })),
-            initial: data.emoji_types.findIndex(({title}) => {
+            initial: data.emoji_types.find(({title}) => {
                 return config && config.coach
                     ? title === "Internal Projects"
                     : title === "Student Projects";
-            }),
+            }).title,
         },
         {
             type: "input",
