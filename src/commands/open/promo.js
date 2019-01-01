@@ -12,7 +12,7 @@ import {select} from "enquirer";
 
 import reporter from "../../core/reporter";
 
-export default (cmd, config, data) => {
+export default async (cmd, config, data) => {
     let promo;
 
     if (cmd.choose) {
