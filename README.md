@@ -12,6 +12,15 @@
 
 **BeCode CLI** is a command-line based util, with useful tools to automate some of your dev tasks at BeCode.
 
+## About
+
+*Junior* or *Coach*, introducing **BeCode CLI**: a small util tool, giving you some great commands without leaving your terminal.  
+For now, this tool allows you to navigate to our different GitHub repositories, generate complete *docker dev environments* or generate `README.md` files according to BeCode standards.
+
+But remember: **BeCode CLI** is *yours*. Feel free to [contribute](./CONTRIBUTING.md), add new features or [requests new ones](https://github.com/becodeorg/cli/issues).
+
+* * *
+
 ## Installation
 
 You must have [**node.js**](https://nodejs.org/en/) installed on your machine.

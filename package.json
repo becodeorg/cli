@@ -1,6 +1,6 @@
 {
     "name": "@becode/cli",
-    "version": "0.3.1",
+    "version": "0.4.0",
     "description": "CLI Utils at BeCode. Useful for everyone at BeCode.",
     "keywords": ["cli", "tools", "shortcuts", "docker-compose"],
     "homepage": "https://github.com/becodeorg/cli#readme",
@@ -24,8 +24,8 @@
         "postinstall": "node ./bin/post-install.js"
     },
     "lint-staged": {
-        "*.js": ["npx eslint --fix --cache src", "git add"],
-        "*.json": ["npx prettier --parser json --write data", "git add"]
+        "*.js": ["npx eslint --fix --cache", "git add"],
+        "*.json": ["npx prettier --parser json --write", "git add"]
     },
     "husky": {
         "hooks": {
@@ -57,6 +57,7 @@
         "eslint-plugin-prettier": "^3.0.0",
         "husky": "^1.1.4",
         "lint-staged": "^8.0.4",
-        "prettier": "^1.15.2"
+        "prettier": "^1.15.2",
+        "update-notifier": "^2.5.0"
     }
 }

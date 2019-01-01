@@ -7,10 +7,15 @@
  * started at 24/10/2018
  */
 
+import updateNotifier from "update-notifier";
 import commander from "commander";
 import commands from "./commands";
 
-const {version} = require(`${__dirname}/../package.json`);
+const pkg = require(`${__dirname}/../package.json`);
+const {version} = pkg;
+
+// check for possible updates
+updateNotifier({pkg, updateCheckInterval: 259200000}).notify(); // check every three days
 
 commander.version(version);
 
