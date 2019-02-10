@@ -1,6 +1,6 @@
 {
     "name": "@becode/cli",
-    "version": "0.4.2",
+    "version": "0.4.3",
     "description": "CLI Utils at BeCode. Useful for everyone at BeCode.",
     "keywords": ["cli", "tools", "shortcuts", "docker-compose"],
     "homepage": "https://github.com/becodeorg/cli#readme",
