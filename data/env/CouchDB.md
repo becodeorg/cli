@@ -13,6 +13,8 @@ Apache CouchDB™ lets you access your data where you need it by defining the Co
 
 ##### Usage
 
+⚠️ **WARNING:** by default, CouchDB is disallowing [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS), which is kinda boring when used within a front-end app. You can fix that by hand, but you can also use the following command, once, to fix it: `npx add-cors-to-couchdb http://dev:dev@localhost:5984 -u dev -p dev`
+
 **NOTE:** the container don't create a database at startup - create it within your code (or using the [embedded admin, Fauxton](http://localhost:5984/_utils))
 
 ###### Access from another container
