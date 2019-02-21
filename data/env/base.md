@@ -2,6 +2,8 @@
 
 This is a generated README by the [BeCode CLI tool](https://github.com/becodeorg/cli).
 
+If you are completely new to Docker we recommend you to read the [Docker Survival Guide](https://github.com/becodeorg/cli/tree/develop/docs/docker-survival-guide).
+
 ## Install `docker` & `docker-compose`
 
 ### For macOS
