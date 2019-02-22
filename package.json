@@ -24,8 +24,7 @@
         "postinstall": "node ./bin/post-install.js"
     },
     "lint-staged": {
-        "*.js": ["npx eslint --fix --cache", "git add"],
-        "*.json": ["npx prettier --parser json --write", "git add"]
+        "*.js": ["npx eslint --fix --cache", "git add"]
     },
     "husky": {
         "hooks": {
