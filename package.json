@@ -1,8 +1,13 @@
 {
     "name": "@becode/cli",
-    "version": "0.5.1",
+    "version": "0.5.2",
     "description": "CLI Utils at BeCode. Useful for everyone at BeCode.",
-    "keywords": ["cli", "tools", "shortcuts", "docker-compose"],
+    "keywords": [
+        "cli",
+        "tools",
+        "shortcuts",
+        "docker-compose"
+    ],
     "homepage": "https://github.com/becodeorg/cli#readme",
     "bugs": {
         "url": "https://github.com/becodeorg/cli/issues"
@@ -15,7 +20,10 @@
     "bin": {
         "becode": "./bin/index.js"
     },
-    "files": ["bin", "data"],
+    "files": [
+        "bin",
+        "data"
+    ],
     "scripts": {
         "work": "npx babel src --watch --verbose --out-dir bin",
         "build": "npx babel src --out-dir bin",
@@ -24,7 +32,10 @@
         "postinstall": "node ./bin/post-install.js"
     },
     "lint-staged": {
-        "*.js": ["npx eslint --fix --cache", "git add"]
+        "*.js": [
+            "npx eslint --fix --cache",
+            "git add"
+        ]
     },
     "husky": {
         "hooks": {

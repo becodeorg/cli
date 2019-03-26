@@ -13,7 +13,5 @@ WordPress is a free and open source blogging tool and a content management syste
 
 ##### Usage
 
-The data of your wordpress instance is saved in `./data/wordpress/wp-content`.
-
 Access it with your browser at address [localhost](http://localhost).
 
