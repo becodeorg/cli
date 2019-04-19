@@ -42,6 +42,14 @@ If you need help, use the `help` command:
 or
 
     becode help [command]
+    
+### 🤟 _Recommanded:_ use `npx`
+
+While the command can be a bit longer, it's better to use `npx` instead of installing packages globally.
+
+To do so, instead of using `becode` command, use `npx @becode/cli`:
+
+	npx @becode/cli [command] [args...]
 
 ### Available commands
 
