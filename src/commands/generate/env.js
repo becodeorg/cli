@@ -13,6 +13,7 @@ import childProcess from "child_process";
 import {select, multiselect, confirm} from "enquirer";
 import chalk from "chalk";
 import {stringify} from "json2yaml";
+import mkdir from "make-dir";
 
 import {getGitRoot} from "../../core/utils";
 import reporter from "../../core/reporter";
@@ -31,6 +32,7 @@ export default async function(cmd) {
     let targetPath,
         docContent = [],
         services = [],
+        foldersToCreate = [],
         postCommands = [],
         composeConfig = {
             version: "3",
@@ -109,9 +111,14 @@ export default async function(cmd) {
     }
 
     services.forEach(key => {
-        const {name, service, commands, documentation, volumes} = data.services[
-            key
-        ];
+        const {
+            name,
+            service,
+            commands,
+            documentation,
+            volumes,
+            folders,
+        } = data.services[key];
 
         composeConfig.services[name] = service;
 
@@ -127,6 +134,8 @@ export default async function(cmd) {
         docContent.push(
             fs.readFileSync(path.join(DOC_PATH, documentation), "utf8"),
         );
+
+        Array.isArray(folders) && foldersToCreate.push(...folders);
 
         Array.isArray(commands) && postCommands.push(...commands);
     });
@@ -163,6 +172,14 @@ export default async function(cmd) {
         )}\n${docContent.join("\n* * *\n\n")}`,
         "utf8",
     );
+
+    if (foldersToCreate.length) {
+        reporter.log(`Creating ${chalk.cyan("binded volumes")} folders…`);
+
+        await Promise.all(
+            foldersToCreate.map(async folder => await mkdir(folder)),
+        );
+    }
 
     if (postCommands.length) {
         reporter.log(
