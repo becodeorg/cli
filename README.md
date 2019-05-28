@@ -19,6 +19,23 @@ For now, this tool allows you to navigate to our different GitHub repositories, 
 
 But remember: **BeCode CLI** is *yours*. Feel free to [contribute](./CONTRIBUTING.md), add new features or [requests new ones](https://github.com/becodeorg/cli/issues).
 
+### Use cases
+
+#### Generating docker environment for your projects
+
+The BeCode CLI can generate a `docker-compose.yml` file to handle the dev env for your project.  
+Simply run `becode generate env` from *inside a git repository* and answer the questions.
+
+You can either install predefined application environment (like **Wordpress**, **Drupal**, **Ghost**…), or build a custom environment, by choosing your main language, your database and tools.
+
+The BeCode CLI will generate two files: a complete, *ready-to-use* `docker-compose.yml` file ; and a `docker-readme.md` file, containing all the information about docker (how to install and configure), and the containers of your app.
+
+#### Generating complete `README.md` template files
+
+The BeCode CLI can generate a `README.md` respecting our [internal guidelines](https://github.com/becodeorg/Central/tree/master/templates/readme).
+
+Simply run `becode generate readme` from *inside a git repository* and answer the questions.
+
 * * *
 
 ## Installation
@@ -95,6 +112,11 @@ Use interactive process to generate useful files for your projects.
 Feel free to _hack_ the tool, suggest any modification and/or implement it by yourself and submit a _pull request_ !
 
 The contribution guide is in the [CONTRIBUTING.md](./CONTRIBUTING.md) file.
+
+### Any idea? Suggestions?
+
+You don't want (or can't) help, but you have some ideas to improve BeCode CLI?  
+Please, [create an issue](https://github.com/becodeorg/cli/issues) and tell us everything.
 
 * * *
 
