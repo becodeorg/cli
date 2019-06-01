@@ -55,7 +55,7 @@
         "json2yaml": "^1.1.0",
         "luxon": "^1.11.3",
         "make-dir": "^3.0.0",
-        "opn": "^5.4.0",
+        "opn": "^6.0.0",
         "update-notifier": "^2.5.0",
         "user-home": "^2.0.0"
     },
