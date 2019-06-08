@@ -54,11 +54,7 @@ The command use this syntax:
 
 If you need help, use the `help` command:
 
-    becode help
-
-or
-
-    becode help [command]
+    becode --help
     
 ### 🤟 _Recommanded:_ use `npx`
 
