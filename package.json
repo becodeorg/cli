@@ -1,6 +1,6 @@
 {
     "name": "@becode/cli",
-    "version": "0.7.0",
+    "version": "0.8.0",
     "description": "CLI Utils at BeCode. Useful for everyone at BeCode.",
     "keywords": [
         "cli",
