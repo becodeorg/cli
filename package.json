@@ -65,7 +65,7 @@
         "@babel/plugin-proposal-object-rest-spread": "^7.3.2",
         "@babel/preset-env": "^7.3.1",
         "babel-eslint": "^10.0.1",
-        "eslint": "^5.14.1",
+        "eslint": "^6.0.0",
         "eslint-plugin-prettier": "^3.0.1",
         "husky": "^2.3.0",
         "lint-staged": "^8.1.4",
