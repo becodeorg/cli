@@ -17,6 +17,10 @@
         "Bouman Brussels 1.11": "https://github.com/becodeorg/BXL-Bouman-1.11",
         "Giertz Antwerpen 1.11": "https://github.com/becodeorg/ANT-Giertz-1-11",
         "Hamilton Liège 2.12": "https://github.com/becodeorg/LIE-Hamilton-2.12",
-        "Hopper Genk 2.12": "https://github.com/becodeorg/GNK-Hopper-2.12"
+        "Hopper Genk 2.12": "https://github.com/becodeorg/GNK-Hopper-2.12",
+        "Lamarr Antwerpen 2.13": "https://github.com/becodeorg/ANT-Lamarr-2.13",
+        "Johnson Brussels 4.14": "https://github.com/becodeorg/BXL-Johnson-4.14",
+        "Lovelace Brussels 4.14": "https://github.com/becodeorg/BXL-Lovelace-4.14",
+        "Jepsen Liège 2.14": "https://github.com/becodeorg/LIE-Jepsen-2.14"
     }
 }
