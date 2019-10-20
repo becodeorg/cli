@@ -50,7 +50,7 @@ export const action = async (target, cmd) => {
             "Open your promo repository",
         ],
         central: repositoryTarget("central", "Central"),
-        watch: repositoryTarget("central", "Watch"),
+        watch: repositoryTarget("watch", "Watch"),
     };
 
     try {
