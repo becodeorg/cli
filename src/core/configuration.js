@@ -10,7 +10,7 @@ import {resolve} from "path";
 import home from "user-home";
 import {existsSync, writeFileSync} from "fs";
 
-const configFile = resolve(home, ".becode-config.json");
+const configFile = resolve(home, ".becode.cli.json");
 
 export const get = () => {
     if (!existsSync(configFile)) {
