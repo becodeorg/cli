@@ -34,8 +34,7 @@
     },
     "lint-staged": {
         "*.js": [
-            "npx eslint --fix --cache",
-            "git add"
+            "npx eslint --fix --cache"
         ]
     },
     "husky": {
