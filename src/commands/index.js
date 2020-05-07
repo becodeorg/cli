@@ -7,7 +7,8 @@
  */
 
 import * as login from "./login";
+import * as whoami from "./whoami";
 import * as generate from "./generate";
 import * as open from "./open";
 
-export default [login, generate, open];
+export default [login, whoami, generate, open];
