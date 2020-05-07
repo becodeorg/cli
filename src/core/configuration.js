@@ -14,7 +14,7 @@ const configFile = resolve(home, ".becode.cli.json");
 
 export const get = () => {
     if (!existsSync(configFile)) {
-        return false;
+        return {};
     }
 
     const config = require(configFile); // eslint-disable-line global-require
@@ -22,6 +22,10 @@ export const get = () => {
     return config;
 };
 
-export const set = config => {
-    writeFileSync(configFile, JSON.stringify(config, null, 2), "utf8");
+export const set = (config) => {
+    writeFileSync(
+        configFile,
+        JSON.stringify(Object.assign({}, get(), config), null, 2),
+        "utf8",
+    );
 };
