@@ -19,6 +19,13 @@ const req = (withToken, query, bindings = {}, context = "prod") => {
     const headers = {};
 
     if (withToken) {
+        const token = getConfig()[`${context}_token`];
+
+        if (!token) {
+            throw new Error(
+                `Missing token: you're not connected. Please use "becode login" before running this command.`,
+            );
+        }
         headers.Authorization = `Bearer ${getConfig()[`${context}_token`]}`;
     }
 
