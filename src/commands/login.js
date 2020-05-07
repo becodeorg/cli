@@ -145,7 +145,7 @@ export const action = async (cmd) => {
 
         const {
             consumer: {
-                owner: {name},
+                owner: {name, displayname},
             },
         } = await userRequest(
             `
@@ -155,6 +155,12 @@ export const action = async (cmd) => {
                         ... on Person {
                             name
                         }
+                        ... on Coach {
+                            displayname
+                        }
+                        ... on Staff {
+                            displayname
+                        }
                     }
                 }
             }
@@ -163,7 +169,9 @@ export const action = async (cmd) => {
             context,
         );
 
-        reporter.log(`You're connected. Welcome, ${chalk.cyan(name)}!`);
+        reporter.log(
+            `You're connected. Welcome, ${chalk.cyan(displayname || name)}!`,
+        );
 
         process.exit(0);
     } catch (error) {
