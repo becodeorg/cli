@@ -35,23 +35,23 @@ export const action = async (cmd) => {
             },
         } = await userRequest(
             `
-            query consumer {
-                consumer {
-                    owner {
-                        type: __typename
-                        ... on Person {
-                            name
-                        }
-                        ... on Coach {
-                            displayname
-                        }
-                        ... on Staff {
-                            displayname
+                query consumer {
+                    consumer {
+                        owner {
+                            type: __typename
+                            ... on Person {
+                                name
+                            }
+                            ... on Coach {
+                                displayname
+                            }
+                            ... on Staff {
+                                displayname
+                            }
                         }
                     }
                 }
-            }
-        `,
+            `,
             {},
             context,
         );
@@ -67,7 +67,6 @@ export const action = async (cmd) => {
         process.exit(0);
     } catch (error) {
         spinner.fail();
-        reporter.log(`Aborted: ${error.message || error}`);
-        process.exit(0);
+        reporter.die(`${error.message || error}`);
     }
 };
