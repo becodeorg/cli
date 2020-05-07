@@ -9,16 +9,20 @@
 import {GraphQLClient} from "graphql-request";
 import {get as getConfig} from "./configuration";
 
-const GRAPH_HOST = "https://graph.becode.org";
+const GRAPH_HOST = {
+    local: "http://localhost:9080/dev",
+    staging: "https://graph.becode.xyz",
+    prod: "https://graph.becode.org",
+};
 
-const req = (withToken, query, bindings = {}) => {
+const req = (withToken, query, bindings = {}, context = "prod") => {
     const headers = {};
 
     if (withToken) {
-        headers.Authorization = `Bearer ${getConfig().token}`;
+        headers.Authorization = `Bearer ${getConfig()[`${context}_token`]}`;
     }
 
-    const client = new GraphQLClient(GRAPH_HOST, {headers});
+    const client = new GraphQLClient(GRAPH_HOST[context], {headers});
 
     return client.request(query, bindings);
 };
@@ -26,3 +30,14 @@ const req = (withToken, query, bindings = {}) => {
 export const request = (...args) => req(false, ...args);
 
 export const userRequest = (...args) => req(true, ...args);
+
+export const getContext = (cmd) => {
+    if (cmd.local) {
+        return "local";
+    }
+    if (cmd.staging) {
+        return "staging";
+    }
+
+    return "prod";
+};
