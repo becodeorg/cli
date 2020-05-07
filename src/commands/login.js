@@ -129,12 +129,12 @@ export const action = async (cmd) => {
             loginWithGitHub: {token},
         } = await request(
             `
-            mutation loginWithGitHub($access_token: String!) {
-                loginWithGitHub(ghToken: $access_token, useCookie: false) {
-                    token
+                mutation loginWithGitHub($access_token: String!) {
+                    loginWithGitHub(ghToken: $access_token, useCookie: false) {
+                        token
+                    }
                 }
-            }
-        `,
+            `,
             {access_token},
             context,
         );
@@ -149,22 +149,22 @@ export const action = async (cmd) => {
             },
         } = await userRequest(
             `
-            query consumer {
-                consumer {
-                    owner {
-                        ... on Person {
-                            name
-                        }
-                        ... on Coach {
-                            displayname
-                        }
-                        ... on Staff {
-                            displayname
+                query consumer {
+                    consumer {
+                        owner {
+                            ... on Person {
+                                name
+                            }
+                            ... on Coach {
+                                displayname
+                            }
+                            ... on Staff {
+                                displayname
+                            }
                         }
                     }
                 }
-            }
-        `,
+            `,
             {},
             context,
         );
@@ -176,7 +176,6 @@ export const action = async (cmd) => {
         process.exit(0);
     } catch (error) {
         spinner.fail();
-        reporter.log(`Aborted: ${error.message || error}`);
-        process.exit(0);
+        reporter.die(error.message || error);
     }
 };
