@@ -14,7 +14,7 @@ import murmur from "murmur";
 import {stringify, parse} from "qs";
 import ora from "ora";
 import axios from "axios";
-import {request, userRequest} from "../core/graph";
+import {request, userRequest, getContext} from "../core/graph";
 import reporter from "../core/reporter";
 import {set as setConfig} from "../core/configuration";
 
@@ -29,7 +29,7 @@ const getGitHubCode = () =>
 
         const githubCallbackHandler = new Koa();
 
-        githubCallbackHandler.use(async ctx => {
+        githubCallbackHandler.use(async (ctx) => {
             if (ctx.request.url.startsWith("/auth")) {
                 const {search} = new URL(`http://localhost${ctx.request.url}`);
                 const {code, state} = parse(search, {ignoreQueryPrefix: true});
@@ -46,8 +46,22 @@ const getGitHubCode = () =>
 
                 resolve(code);
 
-                ctx.body =
-                    "Successfully connected to GitHub. You can now close this window and going back to your terminal.";
+                ctx.body = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BeCode CLI</title>
+</head>
+<body>
+    <p>
+        Successfully connected to GitHub. You can now close this window and going back to your terminal.
+    </p>
+
+    <script>
+        setTimeout(()=>window.close(),3000)
+    </script>
+</body>
+</html>`;
             }
         });
 
@@ -69,9 +83,12 @@ export const command = "login";
 export const description =
     "Login to your account on the BeCode GraphQL API. Required for some commands.";
 
-export const options = [];
+export const options = [
+    ["--local", "Use the local version of the API"],
+    ["--staging", "Use the staging version of the API"],
+];
 
-export const action = async () => {
+export const action = async (cmd) => {
     reporter.log(
         "This script will now open a browser to let you login on GitHub.\nDon't close your terminal until the whole process is done.",
     );
@@ -106,6 +123,8 @@ export const action = async () => {
             })}`,
         );
 
+        const context = getContext(cmd);
+
         const {
             loginWithGitHub: {token},
         } = await request(
@@ -117,25 +136,32 @@ export const action = async () => {
             }
         `,
             {access_token},
+            context,
         );
 
         spinner.succeed();
 
-        setConfig({token});
+        setConfig({[`${context}_token`]: token});
 
         const {
             consumer: {
                 owner: {name},
             },
-        } = await userRequest(`
+        } = await userRequest(
+            `
             query consumer {
                 consumer {
                     owner {
-                        name
+                        ... on Person {
+                            name
+                        }
                     }
                 }
             }
-        `);
+        `,
+            {},
+            context,
+        );
 
         reporter.log(`You're connected. Welcome, ${chalk.cyan(name)}!`);
 
