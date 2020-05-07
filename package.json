@@ -17,6 +17,7 @@
         "url": "https://becode.org",
         "email": "leny@becode.org"
     },
+    "main": "./bin/index.js",
     "bin": {
         "becode": "./bin/index.js"
     },
