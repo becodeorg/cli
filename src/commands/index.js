@@ -10,7 +10,8 @@ import * as login from "./login";
 import * as loginAs from "./login-as";
 import * as logout from "./logout";
 import * as whoami from "./whoami";
+import * as directory from "./directory";
 import * as generate from "./generate";
 import * as open from "./open";
 
-export default [login, loginAs, logout, whoami, generate, open];
+export default [login, loginAs, logout, whoami, directory, generate, open];
