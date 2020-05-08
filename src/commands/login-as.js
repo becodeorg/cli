@@ -12,6 +12,8 @@ import {request, userRequest, getContext} from "../core/graph";
 import reporter from "../core/reporter";
 import {set as setConfig, get as getConfig} from "../core/configuration";
 
+const gql = String.raw;
+
 const spinner = ora();
 
 export const command = "login-as [type] [slug]";
@@ -48,9 +50,18 @@ export const action = async (rawType, rawSlug, cmd) => {
         const {
             loginAs: {token},
         } = await request(
-            `
-                mutation loginAs($type: UserType!, $slug: String!, $admin_key: String!) {
-                    loginAs(collection: $type, slug: $slug, key: $admin_key, useCookie: false) {
+            gql`
+                mutation loginAs(
+                    $type: UserType!
+                    $slug: String!
+                    $admin_key: String!
+                ) {
+                    loginAs(
+                        collection: $type
+                        slug: $slug
+                        key: $admin_key
+                        useCookie: false
+                    ) {
                         token
                     }
                 }
@@ -66,7 +77,7 @@ export const action = async (rawType, rawSlug, cmd) => {
                 owner: {name, displayname},
             },
         } = await userRequest(
-            `
+            gql`
                 query consumer {
                     consumer {
                         owner {

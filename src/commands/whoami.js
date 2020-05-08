@@ -11,6 +11,8 @@ import ora from "ora";
 import {userRequest, getContext} from "../core/graph";
 import reporter from "../core/reporter";
 
+const gql = String.raw;
+
 const spinner = ora();
 
 export const command = "whoami";
@@ -34,7 +36,7 @@ export const action = async (cmd) => {
                 owner: {name, displayname, type},
             },
         } = await userRequest(
-            `
+            gql`
                 query consumer {
                     consumer {
                         owner {

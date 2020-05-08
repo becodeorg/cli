@@ -11,6 +11,8 @@ import {userRequest, getContext} from "../core/graph";
 import reporter from "../core/reporter";
 import {set as setConfig} from "../core/configuration";
 
+const gql = String.raw;
+
 const spinner = ora();
 
 export const command = "logout";
@@ -30,7 +32,7 @@ export const action = async (cmd) => {
         spinner.start("Logout…");
 
         await userRequest(
-            `
+            gql`
                 mutation revoke {
                     revoke
                 }

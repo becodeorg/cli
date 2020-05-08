@@ -21,6 +21,8 @@ import {set as setConfig} from "../core/configuration";
 const GITHUB_ID = "eafd08b71984b1ccc214";
 const redirect_uri = "http://localhost:57341/auth";
 
+const gql = String.raw;
+
 const spinner = ora();
 
 const getGitHubCode = () =>
@@ -128,7 +130,7 @@ export const action = async (cmd) => {
         const {
             loginWithGitHub: {token},
         } = await request(
-            `
+            gql`
                 mutation loginWithGitHub($access_token: String!) {
                     loginWithGitHub(ghToken: $access_token, useCookie: false) {
                         token
@@ -148,7 +150,7 @@ export const action = async (cmd) => {
                 owner: {name, displayname},
             },
         } = await userRequest(
-            `
+            gql`
                 query consumer {
                     consumer {
                         owner {
