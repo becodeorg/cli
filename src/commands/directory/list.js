@@ -6,13 +6,12 @@
  * started at 08/05/2020
  */
 
-/* eslint-disable */ // WIP
-
 import chalk from "chalk";
 import ora from "ora";
 import {userRequest, getContext} from "../../core/graph";
 import reporter from "../../core/reporter";
 import {Select} from "enquirer";
+import {showDetails} from "./details";
 
 const gql = String.raw;
 
@@ -21,8 +20,10 @@ const spinner = ora();
 export default async function (query, cmd) {
     const context = getContext(cmd);
 
-    const fetchPersons = async pageNumber => {
-        spinner.start("Fetchind data…");
+    const fetchPersons = async (pageNumber = 1) => {
+        spinner.start(
+            `Fetching data${pageNumber > 1 ? ` (page ${pageNumber})` : ""}…`,
+        );
 
         const {
             persons: {totalCount, pageInfo, nodes},
@@ -84,7 +85,7 @@ export default async function (query, cmd) {
                     }
                 }
             `,
-            {filterQuery: query},
+            {filterQuery: query, pageNumber},
             context,
         );
 
@@ -93,6 +94,7 @@ export default async function (query, cmd) {
         if (!nodes.length) {
             reporter.log("No result");
         } else {
+            reporter.log(`${totalCount} result${totalCount > 1 ? "s" : ""}`);
             const choices = [];
 
             if (pageInfo.hasPreviousPage) {
@@ -105,7 +107,7 @@ export default async function (query, cmd) {
             }
 
             choices.push(
-                ...nodes.map(person => ({
+                ...nodes.map((person) => ({
                     name: [person.type, person.slug],
                     message: `${chalk.cyan(person.lastname)} ${
                         person.firstname
@@ -129,6 +131,13 @@ export default async function (query, cmd) {
 
             const choice = await prompt.run();
 
+            if (choice[0] === "__previous") {
+                return fetchPersons(pageNumber - 1);
+            }
+            if (choice[0] === "__next") {
+                return fetchPersons(pageNumber + 1);
+            }
+
             return choice;
         }
     };
@@ -136,7 +145,11 @@ export default async function (query, cmd) {
     try {
         const choice = await fetchPersons();
 
-        console.log("choice:", choice);
+        if (choice) {
+            const [type, slug] = choice;
+
+            await showDetails(context, type, slug, cmd.withId);
+        }
 
         process.exit(0);
     } catch (error) {

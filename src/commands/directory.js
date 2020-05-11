@@ -8,6 +8,7 @@
 
 import reporter from "../core/reporter";
 import directoryList from "./directory/list";
+import directoryDetails from "./directory/details";
 
 export const command = "directory <type> [query]";
 
@@ -16,6 +17,7 @@ export const description = "Directory (who's who of BeCode people)";
 export const options = [
     ["--local", "Use the local version of the API"],
     ["--staging", "Use the staging version of the API"],
+    ["--with-id", "Show the uid in details mode"],
 ];
 
 export const action = async (rawType, rawQuery, cmd) => {
@@ -24,6 +26,7 @@ export const action = async (rawType, rawQuery, cmd) => {
 
     const types = {
         list: directoryList,
+        details: directoryDetails,
     };
 
     try {
