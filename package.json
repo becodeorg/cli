@@ -30,7 +30,7 @@
         "build": "npx babel src --out-dir bin",
         "prepare": "npx babel src --out-dir bin",
         "lint": "npx eslint --fix --cache src",
-        "postinstall": "node ./bin/post-install.js"
+        "postinstall": "node -e \"try{require('./bin/post-install.js')}catch(e){}\""
     },
     "lint-staged": {
         "*.js": [
