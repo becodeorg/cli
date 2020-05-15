@@ -1,0 +1,33 @@
+# becodeorg/cli
+#
+# /.github/workflows/publish.yml - npm publish workflow
+#
+# coded by leny@BeCode
+# started at 27/10/2019
+
+name: npm publish
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+      - name: Install dependencies
+        run: npm ci
+        env:
+          ADBLOCK: true
+          CI: true
+          DISABLE_OPENCOLLECTIVE: true
+      - name: Publish
+        run: npm publish
+        env:
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}

@@ -26,6 +26,11 @@ class Reporter {
     error(...args) {
         console.log("‼️ ", chalk.bold.red("error:"), ...args);
     }
+
+    die(...args) {
+        console.log("‼️ ", chalk.bold.red("error:"), ...args);
+        process.exit(1);
+    }
 }
 
 export default new Reporter();
