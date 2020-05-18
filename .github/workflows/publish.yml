@@ -27,6 +27,10 @@ jobs:
           ADBLOCK: true
           CI: true
           DISABLE_OPENCOLLECTIVE: true
+      - name: Create npmrc file
+        run: |
+          echo '' > .npmrc
+          echo '//registry.npmjs.org/:_authToken='${{ secrets.NPM_AUTH_TOKEN }} >> .npmrc
       - name: Publish
         run: npm publish
         env:
