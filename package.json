@@ -67,7 +67,7 @@
         "ora": "^4.0.2",
         "qs": "^6.9.0",
         "terminal-image": "^1.0.0",
-        "update-notifier": "^4.0.0",
+        "update-notifier": "^5.0.1",
         "user-home": "^2.0.0"
     },
     "devDependencies": {
