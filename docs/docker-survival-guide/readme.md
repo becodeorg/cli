@@ -4,6 +4,7 @@
 1. [The big picture about Docker](#the-big-picture-about-docker)
 1. [And now let's use docker-compose](#and-now-lets-use-docker-compose)
 1. [Just gimme the damn commands!](#just-gimme-the-damn-commands)
+1. [Docker Handbook](#docker-handbook)
 
 ## Introduction
 
@@ -438,3 +439,7 @@ It will fail if some images are currently in use by a container.
 ```bash
 docker volume prune
 ```
+
+## Docker Handbook
+
+For more informations, we recommend to have a look at this [Docker Handbook](https://www.freecodecamp.org/news/the-docker-handbook/) 
