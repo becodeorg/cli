@@ -118,6 +118,8 @@ When you're done playing you can exit dans command line interpreter by typing `e
 
 ## And now let's use docker-compose
 
+> 👉 if you use docker compose V2 use the command `docker compose` without the `-`
+
 OK, you now have the possibility to run commands with Docker. But it's not particularly easy or intuitive and it's easy to assume you don't really see how it could be helpful.
 
 That's because we usually don't use Docker directly. Most use cases involve using and automation tool to orchestrate its usage. The most used one for development purposes is named `docker-compose`.
