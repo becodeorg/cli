@@ -2,7 +2,7 @@
 
 1. [Introduction](#Introduction)
 1. [The big picture about Docker](#the-big-picture-about-docker)
-1. [And now let's use docker-compose](#and-now-lets-use-docker-compose)
+1. [And now let's use docker compose](#and-now-lets-use-docker-compose)
 1. [Just gimme the damn commands!](#just-gimme-the-damn-commands)
 1. [Docker Handbook](#docker-handbook)
 
@@ -74,10 +74,10 @@ Instead what almost everyone does is to use [Docker Hub](https://hub.docker.com/
 To install docker type this command:
 
 ```bash
-sudo apt install docker.io docker-compose
+sudo apt install docker.io docker compose
 ```
 
-Here we also install `docker-compose` which is an important tool we'll use later.
+Here we also install `docker compose` which is an important tool we'll use later.
 
 But that's not finished yet. Currently Docker can only be run using `sudo`. This is both boring and error prone. We'll add some configuration to allow your user to use Docker directly:
 
@@ -116,13 +116,13 @@ The result is that we now have a command line interpreter *inside a Docker conta
 
 When you're done playing you can exit dans command line interpreter by typing `exit`.
 
-## And now let's use docker-compose
+## And now let's use docker compose
 
 > 👉 if you use docker compose V2 use the command `docker compose` without the `-`
 
 OK, you now have the possibility to run commands with Docker. But it's not particularly easy or intuitive and it's easy to assume you don't really see how it could be helpful.
 
-That's because we usually don't use Docker directly. Most use cases involve using and automation tool to orchestrate its usage. The most used one for development purposes is named `docker-compose`.
+That's because we usually don't use Docker directly. Most use cases involve using and automation tool to orchestrate its usage. The most used one for development purposes is named `docker compose`.
 
 ### Sample usage
 
@@ -140,7 +140,7 @@ services:
 Finally type the following command in that folder:
 
 ```bash
-docker-compose up
+docker compose up
 ```
 
 You'll see that docker will download an image then will launch something. Using your web browser go to the website `http://localhost:8080` and you will see a welcome message from nginx.
@@ -164,7 +164,7 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 
 The last command gives you a list of the current containers on your machine. As you can see there is one container running nginx.
 
-To stop that container go back to the terminal where you launched `docker-compose up` and hit `Ctrl C`.
+To stop that container go back to the terminal where you launched `docker compose up` and hit `Ctrl C`.
 
 ### How to read a docker-compose.yml
 
@@ -246,7 +246,7 @@ services:
       MYSQL_PASSWORD: thisisanotherpassword
 ```
 
-When launching this docker-compose with `docker-compose up` it will implicitely create a volume because the `mariadb` image tells him to. We can see that volume using the following command:
+When launching this docker-compose with `docker compose up` it will implicitely create a volume because the `mariadb` image tells him to. We can see that volume using the following command:
 
 ```bash
 docker volume ls
@@ -313,7 +313,7 @@ Now you can go take a look at the `./saveddb` and see it contains all the files 
 
 #### Network links
 
-This feature is not something we will explicitely write in a `docker-compose.yml`. It's just a very useful feature that is implicitely created by docker-compose to ease our lives.
+This feature is not something we will explicitely write in a `docker-compose.yml`. It's just a very useful feature that is implicitely created by docker compose to ease our lives.
 
 We can now create a lot of services inside a docker-compose file but what happens when we want them to communicate ? (Which is the case like 90% of the time by the way.) When a container is launched it is initialized with a random IP address so it's not so easy to get that IP to make them communicate. To help you with that docker-compose creates some kind of a small DNS server for its containers to get to know each other. Example:
 
@@ -350,7 +350,7 @@ OK, OK, enough with the boring theory. If you just want commands to do stuff her
 #### Starting in the foreground
 
 ```bash
-docker-compose up
+docker compose up
 ```
 
 It will launch all your services and you will see the logs of each of them.
@@ -360,7 +360,7 @@ Hit `Ctrl C` when you when to kill everything.
 #### Starting in the background
 
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
 You won't see any logs this way and you will have to remember to kill your services.
@@ -368,7 +368,7 @@ You won't see any logs this way and you will have to remember to kill your servi
 #### Stopping all services
 
 ```bash
-docker-compose down
+docker compose down
 ```
 
 It will stop and remove all containers.
@@ -378,7 +378,7 @@ It will stop and remove all containers.
 #### See all the services of a docker-compose file
 
 ```bash
-docker-compose ps
+docker compose ps
 ```
 
 #### See all the containers on the machine
@@ -392,7 +392,7 @@ The `-a` parameter is useful to see even stopped containers.
 #### See the logs of the services in a docker-compose file
 
 ```bash
-docker-compose logs
+docker compose logs
 ```
 
 #### See the images currently stored on the machine
